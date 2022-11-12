@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Debug"/>
+    <Units Count="12">
+      <Unit0>
+        <Filename Value="EnemiesFromSpace.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="222"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="enemies_from_space.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="397"/>
+        <CursorPos X="12" Y="404"/>
+        <UsageCount Value="222"/>
+        <Bookmarks Count="4">
+          <Item0 X="3" Y="92"/>
+          <Item1 X="3" Y="300" ID="1"/>
+          <Item2 Y="423" ID="2"/>
+          <Item3 X="7" Y="405" ID="3"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="efs_info.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="110"/>
+        <CursorPos X="22" Y="127"/>
+        <UsageCount Value="222"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="efs_types.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="362"/>
+        <CursorPos X="22" Y="370"/>
+        <UsageCount Value="221"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="efs_field.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="153"/>
+        <CursorPos X="16" Y="308"/>
+        <UsageCount Value="215"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/include/wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5666"/>
+        <CursorPos Y="5675"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/customtimer.pas"/>
+        <UnitName Value="CustomTimer"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="143"/>
+        <CursorPos Y="151"/>
+        <UsageCount Value="6"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/interfaces/gtk2/gtk2callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="760"/>
+        <CursorPos Y="769"/>
+        <UsageCount Value="6"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/include/control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2234"/>
+        <CursorPos Y="2242"/>
+        <UsageCount Value="6"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/include/customedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="520"/>
+        <CursorPos Y="529"/>
+        <UsageCount Value="6"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="111"/>
+        <CursorPos Y="123"/>
+        <UsageCount Value="6"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="../../../../../Programme/LazarusStable0820/lazarus/lcl/interfaces/gtk2/gtk2proc.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2547"/>
+        <CursorPos Y="2557"/>
+        <UsageCount Value="6"/>
+      </Unit11>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="423" TopLine="414"/>
+      </Position1>
+      <Position2>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="424" TopLine="414"/>
+      </Position2>
+      <Position3>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="425" TopLine="414"/>
+      </Position3>
+      <Position4>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="426" TopLine="414"/>
+      </Position4>
+      <Position5>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="437" TopLine="430"/>
+      </Position5>
+      <Position6>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="193" Column="4" TopLine="182"/>
+      </Position6>
+      <Position7>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="423" TopLine="416"/>
+      </Position7>
+      <Position8>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="92" Column="3" TopLine="85"/>
+      </Position8>
+      <Position9>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="300" Column="3" TopLine="293"/>
+      </Position9>
+      <Position10>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="422" TopLine="414"/>
+      </Position10>
+      <Position11>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="193" TopLine="181"/>
+      </Position11>
+      <Position12>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="194" TopLine="182"/>
+      </Position12>
+      <Position13>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="262" TopLine="255"/>
+      </Position13>
+      <Position14>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="176" TopLine="170"/>
+      </Position14>
+      <Position15>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="188" TopLine="181"/>
+      </Position15>
+      <Position16>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="193" Column="4" TopLine="168"/>
+      </Position16>
+      <Position17>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="300" Column="3" TopLine="293"/>
+      </Position17>
+      <Position18>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="422" TopLine="414"/>
+      </Position18>
+      <Position19>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="176" TopLine="168"/>
+      </Position19>
+      <Position20>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="188" TopLine="181"/>
+      </Position20>
+      <Position21>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="191" TopLine="181"/>
+      </Position21>
+      <Position22>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="192" TopLine="181"/>
+      </Position22>
+      <Position23>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="193" TopLine="181"/>
+      </Position23>
+      <Position24>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="261" TopLine="254"/>
+      </Position24>
+      <Position25>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="404" Column="20" TopLine="394"/>
+      </Position25>
+      <Position26>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="60" Column="38" TopLine="54"/>
+      </Position26>
+      <Position27>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="179" Column="29" TopLine="169"/>
+      </Position27>
+      <Position28>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="181" Column="48" TopLine="169"/>
+      </Position28>
+      <Position29>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="182" Column="19" TopLine="169"/>
+      </Position29>
+      <Position30>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="404" Column="66" TopLine="395"/>
+      </Position30>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <Watches Count="3">
+      <Item1>
+        <Expression Value="Start"/>
+      </Item1>
+      <Item2>
+        <Expression Value="shs"/>
+      </Item2>
+      <Item3>
+        <Expression Value="HSE"/>
+      </Item3>
+    </Watches>
+  </Debugging>
+</CONFIG>
