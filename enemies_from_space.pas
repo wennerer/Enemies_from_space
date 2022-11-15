@@ -218,7 +218,7 @@ begin
    made:=false;
    inc(Level);
    LevelDisplay.DisplayText:='Level '+inttostr(Level);
-   BreakDisplay.DisplayText:= 'F10 Break      ESC Exit';
+   BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
    if NG then
     begin
      Level := 0;
@@ -249,12 +249,14 @@ begin
 
  if Key = VK_Up then begin
   SpaceShip.Speed := SpaceShip.Speed -1;
-  if SpaceShip.Speed < 2 then SpaceShip.Speed :=2;
+  if SpaceShip.Speed < 1 then SpaceShip.Speed :=1;
+  BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
  end;
 
  if Key = VK_Down then begin
   SpaceShip.Speed := SpaceShip.Speed +1;
   if SpaceShip.Speed > 8 then SpaceShip.Speed :=8;
+  BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
   end;
 
  if Key = VK_SPACE then begin

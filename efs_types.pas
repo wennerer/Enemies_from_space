@@ -102,7 +102,6 @@ procedure TSpaceShip.SetSpeed(AValue: integer);
 begin
   if FSpeed=AValue then Exit;
   FSpeed:=AValue;
-  STimer.Interval :=  FSpeed;
 end;
 
 constructor TSpaceShip.Create(AOwner: TComponent);
@@ -112,8 +111,8 @@ begin
   height:= 30;
   STimer          := TTimer.Create(nil);
   STimer.SetSubComponent(true);
-  FSpeed := 5;
-  STimer.Interval :=  FSpeed;
+  FSpeed := 1;
+  STimer.Interval :=  5;
   STimer.Enabled  := false;
   STimer.OnTimer  := @OnSTimer;
 
@@ -195,14 +194,14 @@ procedure TSpaceShip.OnSTimer(Sender: TObject);
 begin
  if TrendRight then
   begin
-   Left:= Left+1;
+   Left:= Left+FSpeed;
    if Left +Width > Parent.Width then Left:= Parent.Width - Width;
    Invalidate;
   end;
 
  if TrendLeft then
   begin
-   Left:= Left-1;
+   Left:= Left-FSpeed;
    if Left < 0 then Left:=0;
    Invalidate;
   end;

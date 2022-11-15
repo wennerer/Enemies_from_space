@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="12"/>
-    <BuildModes Active="Linux_64_Default"/>
+    <BuildModes Active="Linux_64"/>
     <Units Count="16">
       <Unit0>
         <Filename Value="EnemiesFromSpace.lpr"/>
@@ -18,7 +18,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <CursorPos X="58" Y="3"/>
+        <TopLine Value="244"/>
+        <CursorPos X="50" Y="252"/>
         <UsageCount Value="222"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,11 +37,11 @@
         <Filename Value="efs_types.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="104"/>
-        <CursorPos X="13" Y="115"/>
+        <TopLine Value="98"/>
+        <CursorPos X="24" Y="107"/>
         <UsageCount Value="221"/>
         <Bookmarks Count="1">
-          <Item0 X="14" Y="116"/>
+          <Item0 X="14" Y="115"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit3>
@@ -137,123 +138,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="371" TopLine="359"/>
+        <Caret Line="365" TopLine="352"/>
       </Position1>
       <Position2>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="372" Column="16" TopLine="368"/>
+        <Caret Line="371" TopLine="352"/>
       </Position2>
       <Position3>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="365" TopLine="352"/>
+        <Caret Line="372" TopLine="352"/>
       </Position3>
       <Position4>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="371" TopLine="352"/>
+        <Caret Line="383" TopLine="370"/>
       </Position4>
       <Position5>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="372" TopLine="352"/>
+        <Caret Line="384" TopLine="370"/>
       </Position5>
       <Position6>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="383" TopLine="370"/>
+        <Caret Line="372" Column="23" TopLine="355"/>
       </Position6>
       <Position7>
-        <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="384" TopLine="370"/>
+        <Filename Value="efs_highscore.pas"/>
+        <Caret Line="17" Column="10" TopLine="4"/>
       </Position7>
       <Position8>
-        <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="372" Column="23" TopLine="355"/>
+        <Filename Value="efs_highscore.pas"/>
+        <Caret Line="146" TopLine="139"/>
       </Position8>
       <Position9>
         <Filename Value="efs_highscore.pas"/>
-        <Caret Line="17" Column="10" TopLine="4"/>
+        <Caret Line="147" TopLine="139"/>
       </Position9>
       <Position10>
-        <Filename Value="efs_highscore.pas"/>
-        <Caret Line="146" TopLine="139"/>
-      </Position10>
-      <Position11>
-        <Filename Value="efs_highscore.pas"/>
-        <Caret Line="147" TopLine="139"/>
-      </Position11>
-      <Position12>
         <Filename Value="enemies_from_space.pas"/>
         <Caret Line="192" Column="2"/>
+      </Position10>
+      <Position11>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="210" Column="11" TopLine="189"/>
+      </Position11>
+      <Position12>
+        <Filename Value="efs_info.pas"/>
+        <Caret Line="45" Column="18" TopLine="25"/>
       </Position12>
       <Position13>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="210" Column="11" TopLine="189"/>
+        <Caret Column="24"/>
       </Position13>
       <Position14>
-        <Filename Value="efs_info.pas"/>
-        <Caret Line="45" Column="18" TopLine="25"/>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="26" Column="3" TopLine="7"/>
       </Position14>
       <Position15>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Column="24"/>
+        <Caret Line="266" Column="2" TopLine="260"/>
       </Position15>
       <Position16>
-        <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="26" Column="3" TopLine="7"/>
-      </Position16>
-      <Position17>
-        <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="266" Column="2" TopLine="260"/>
-      </Position17>
-      <Position18>
         <Filename Value="efs_info.pas"/>
         <Caret Column="48"/>
-      </Position18>
-      <Position19>
+      </Position16>
+      <Position17>
         <Filename Value="efs_info.pas"/>
         <Caret Line="108" Column="15" TopLine="85"/>
-      </Position19>
-      <Position20>
+      </Position17>
+      <Position18>
         <Filename Value="enemies_from_space.pas"/>
         <Caret Line="247" Column="18" TopLine="245"/>
+      </Position18>
+      <Position19>
+        <Filename Value="efs_types.pas"/>
+        <Caret Line="41" Column="15" TopLine="28"/>
+      </Position19>
+      <Position20>
+        <Filename Value="efs_types.pas"/>
+        <Caret Line="166" Column="2" TopLine="164"/>
       </Position20>
       <Position21>
         <Filename Value="efs_types.pas"/>
-        <Caret Line="41" Column="15" TopLine="28"/>
+        <Caret Line="38" Column="20" TopLine="24"/>
       </Position21>
       <Position22>
         <Filename Value="efs_types.pas"/>
-        <Caret Line="166" Column="2" TopLine="164"/>
+        <Caret Line="99" Column="18" TopLine="89"/>
       </Position22>
       <Position23>
         <Filename Value="efs_types.pas"/>
-        <Caret Line="38" Column="20" TopLine="24"/>
+        <Caret Line="47" Column="54" TopLine="24"/>
       </Position23>
       <Position24>
-        <Filename Value="efs_types.pas"/>
-        <Caret Line="99" Column="18" TopLine="89"/>
-      </Position24>
-      <Position25>
-        <Filename Value="efs_types.pas"/>
-        <Caret Line="47" Column="54" TopLine="24"/>
-      </Position25>
-      <Position26>
         <Filename Value="enemies_from_space.pas"/>
         <Caret Line="257" Column="50" TopLine="239"/>
+      </Position24>
+      <Position25>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="251" Column="40" TopLine="241"/>
+      </Position25>
+      <Position26>
+        <Filename Value="efs_types.pas"/>
+        <Caret Line="49" Column="51" TopLine="30"/>
       </Position26>
       <Position27>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="251" Column="40" TopLine="241"/>
+        <Caret Line="256" Column="39" TopLine="243"/>
       </Position27>
       <Position28>
-        <Filename Value="efs_types.pas"/>
-        <Caret Line="49" Column="51" TopLine="30"/>
+        <Filename Value="enemies_from_space.pas"/>
+        <Caret Line="258" Column="2" TopLine="243"/>
       </Position28>
       <Position29>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="256" Column="39" TopLine="243"/>
+        <Caret Line="475" Column="7" TopLine="449"/>
       </Position29>
       <Position30>
         <Filename Value="enemies_from_space.pas"/>
-        <Caret Line="258" Column="2" TopLine="243"/>
+        <Caret Line="221" Column="73" TopLine="208"/>
       </Position30>
     </JumpHistory>
     <RunParams>
