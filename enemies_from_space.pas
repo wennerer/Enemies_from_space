@@ -1,13 +1,29 @@
+{ <Enemies from Space>
+
+  Copyright (C) <15.11.2022> <Bernd Hübner> <Version 1.0>
+
+  This source is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+  License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later
+  version.
+
+  This code is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  A copy of the GNU General Public License is available on the World Wide Web at
+  <http://www.gnu.org/copyleft/gpl.html>. You can also obtain it by writing to the Free Software Foundation, Inc., 51
+  Franklin Street - Fifth Floor, Boston, MA 02110-1335, USA.
+}
+
 unit enemies_from_space;
 
 {$mode objfpc}{$H+}
-//WARNING: TRocket.Destroy with LCLRefCount>0. Hint: Maybe the component is processing an event?
-//TERocket.Destroy with LCLRefCount>0. Hint: Maybe the component is processing an event?
+
 interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Contnrs, ExtCtrls,
-  Types, efs_info, efs_types, efs_field, PtIn;
+  StdCtrls, Types, efs_info, efs_types, efs_field, efs_highscore,PtIn;
 
 type
 
@@ -25,8 +41,10 @@ type
     procedure CalculateScore;
     procedure OnScoreTimer(Sender: TObject);
     procedure CalculateHighScore;
-    procedure HandleHighScore;
+    procedure EnterHighScoreName(Sender: TObject);
+    procedure CreateNewHighScoreList;
     procedure ShowHighScore;
+
   private
     Info             : TInfo;
     Start            : boolean;
@@ -50,16 +68,14 @@ type
     Score            : integer;
     EFTop            : integer;
     EFIntervall      : integer;
-    NG               : boolean;
+    NG               : boolean; //NewGame
     ScoreTimer       : TTimer;
     ScoreDisplayCount: integer;
     BreakDisplay     : TDisplay;
-    HScoreDisplay     : THighScoreDisplay;
-    HSE              : byte;
-    rank             : byte;
-    HighScoreEdit    : THighScoreEdit;
-    SHS              : boolean;
-    GO               : boolean;
+    HScoreDisplay    : THighScoreDisplay;
+    HScoreEdit       : THighScoreEdit;
+    GO               : boolean; //GameOver
+    HighScoreName    : string;
   public
 
   end;
@@ -87,7 +103,7 @@ begin
    if assigned(TRocket(RocketList.Items[lv])) then
     begin
      Application.ReleaseComponent(TRocket(RocketList.Items[lv]));
-     TRocket(RocketList.Items[lv]):=nil;
+     //TRocket(RocketList.Items[lv]):=nil;
    end;
   end;
  for lv:= 0 to ERocketList.Count-1 do
@@ -95,7 +111,7 @@ begin
    if assigned(TERocket(ERocketList.Items[lv])) then
     begin
      Application.ReleaseComponent(TERocket(ERocketList.Items[lv]));
-     TERocket(ERocketList.Items[lv]):=nil;
+     //TERocket(ERocketList.Items[lv]):=nil;
    end;
   end;
  FreeAndNil(RocketList);
@@ -129,7 +145,6 @@ begin
    Barricades[lv].Parent:= self;
    Barricades[lv].Left  := 120+(lv*220);
    Barricades[lv].Top   := 550;
-   //Barricades[lv].BringToFront;
   end;
 
  New(NewGame);
@@ -166,33 +181,30 @@ begin
  BreakDisplay .Parent := self;
  BreakDisplay .SetBounds(550,0,650,30);
 
- HSE := 0;
- SHS := false;
+ if not fileexists('highscore.xml') then WriteANewList;
 
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if SHS then
+  if assigned(HScoreEdit) and (Key=VK_RETURN) then
   begin
-   if assigned(HScoreDisplay) then FreeAndNil(HScoreDisplay);
-   if assigned(HighScoreEdit) then
-    begin
-     Application.ReleaseComponent(HighScoreEdit);
-     HighScoreEdit:=nil;
-   end;
-   SHS:=false;
-   Info.Blinki := true;
-  end;
-
-  if (Key=VK_RETURN) and (HSE = 2) then
-  begin
-   //showmessage(inttostr(hse));
-   SHS:= true;
-   HandleHighScore;
+   Application.ReleaseComponent(HScoreEdit);
+   HScoreEdit:=nil;
+   CreateNewHighScoreList;
+   ShowHighScore;
    exit;
   end;
-  if Start and (Key=VK_RETURN) then
+
+  if assigned(HScoreDisplay) and (Key=VK_RETURN) then
+  begin
+   Application.ReleaseComponent(HScoreDisplay);
+   HScoreDisplay:=nil;
+   Info.Blinki:=true;
+   exit;
+  end;
+
+ if Start and (Key=VK_RETURN) then
   begin
    if assigned(Info) then
     begin
@@ -206,7 +218,7 @@ begin
    made:=false;
    inc(Level);
    LevelDisplay.DisplayText:='Level '+inttostr(Level);
-   BreakDisplay.DisplayText:= 'F10 Break';
+   BreakDisplay.DisplayText:= 'F10 Break      ESC Exit';
    if NG then
     begin
      Level := 0;
@@ -252,12 +264,6 @@ begin
   if EnemieField.TimerOn then EnemieField.TimerOn:=false else EnemieField.TimerOn := true;
  end;
 
- if Key = VK_F1 then begin
-  if Takt.Enabled then Takt.Enabled:=false else Takt.Enabled:=true;
-  if EnemieField.TimerOn then EnemieField.TimerOn:=false else EnemieField.TimerOn := true;
-  //ShowHighScore;
-  //CalculateHighScore;
- end;
 end;
 
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -371,99 +377,68 @@ begin
     score:= (kills *10) - Shots;
     ScoreDisplay.DisplayText:='Score '+inttostr(score);
     ScoreTimer.Free;
+    if GO then CalculateHighScore;
   end;
- if GO then CalculateHighScore;
 end;
 
 procedure TForm1.CalculateHighScore;
-var lv : integer;
 begin
- HSE:= 1; //kein neuer HighScore
- if not assigned(HScoreDisplay) then HScoreDisplay := THighScoreDisplay.Create(self);
-  try
-  HScoreDisplay.ScoreList.LoadFromFile('HighScore.txt');
- except
-  for lv:=0 to 9 do HScoreDisplay.ScoreList.Add('0');
-  HScoreDisplay.ScoreList.SaveToFile('HighScore.txt');
- end;
- try
-  HScoreDisplay.NameList.LoadFromFile('HighScoreName.txt');
- except
-  for lv:=0 to 9 do HScoreDisplay.NameList.Add('NoName');
-  HScoreDisplay.NameList.SaveToFile('HighScoreName.txt');
- end;
+ if Score > ReadLowest then
+   begin
+    Info.Blinki:=false;
 
- for lv:=0 to 9 do
-  begin
-   if Score >  strtoint(HScoreDisplay.ScoreList[lv]) then
-     begin
-      HScoreDisplay.ScoreList.Insert(lv,inttostr(Score));
-      HScoreDisplay.ScoreList.Delete(10);
-      HScoreDisplay.ScoreList.SaveToFile('HighScore.txt');
-      rank:=lv;
-      if assigned(HighScoreEdit) then FreeAndNil(HighScoreEdit);
-      HighScoreEdit         := THighScoreEdit.Create(self);
-      HighScoreEdit.Parent  := self;
-      HighScoreEdit.Left    := (self.Width div 2)- 150;
-      HighScoreEdit.Top     := 80;
-
-      HSE := 2; //neuer HighScore
-      Info.Blinki      := false;
-      break;
-     end;
-  end;
-
-
-
-
+    if not assigned(HScoreEdit) then
+    HScoreEdit               := THighScoreEdit.Create(self);
+    HScoreEdit.Parent        := self;
+    HScoreEdit.Left          := (width div 2)  - (HScoreEdit.Width div 2) ;
+    HScoreEdit.Top           := (Height div 2) - (HScoreEdit.Height div 2);
+    HScoreEdit.Edit.OnChange := @EnterHighScoreName;
+   end
+  else ShowHighScore;
 end;
 
-procedure TForm1.HandleHighScore;
+procedure TForm1.EnterHighScoreName(Sender: TObject);
 begin
-  if HSE = 1 then
-  begin
-    HSE := 0;
-    SHS := false;
-    exit;
-  end;
-  if HSE = 2 then
-    begin
-      //showmessage(HighScoreEdit.Caption);
-     HScoreDisplay.NameList.Insert(rank,HighScoreEdit.Edit.Text);
-     HScoreDisplay.NameList.Delete(10);
-     HScoreDisplay.NameList.SaveToFile('HighScoreName.txt');
-     //HighScoreEdit.Free;
-     ShowHighScore;
-    end;
+ HighScoreName := HScoreEdit.Edit.Caption;
+end;
+
+procedure TForm1.CreateNewHighScoreList;
+var str   : TStringList;
+    lv    : integer;
+begin
+ str := TStringList.Create;
+ try
+  ReadHighScoreList(str);
+
+  for lv:= 1 to 10 do
+   if Score > ReadScore(inttostr(lv)) then break;
+
+  str.Insert(lv-1,inttostr(Score)+'   '+HighScoreName);
+  WriteHighScoreList(str);
+ finally
+  str.Free;
+ end;
 end;
 
 procedure TForm1.ShowHighScore;
-var lv : integer;
-
+var str   : TStringList;
 begin
- HSE  := 0;
- if not assigned(HScoreDisplay) then
- HScoreDisplay             := THighScoreDisplay.Create(self);
- HScoreDisplay.Parent      := self;
- HScoreDisplay.Left        := 250;
- HScoreDisplay.Top         :=  80;
- //HScoreDisplay.Visible     := false;
-
-
+ str := TStringList.Create;
  try
-  HScoreDisplay.ScoreList.LoadFromFile('HighScore.txt');
- except
-  for lv:=0 to 9 do HScoreDisplay.ScoreList.Add('0');
-  HScoreDisplay.ScoreList.SaveToFile('HighScore.txt');
- end;
- try
-  HScoreDisplay.NameList.LoadFromFile('HighScoreName.txt');
- except
-  for lv:=0 to 9 do HScoreDisplay.NameList.Add('NoName');
-  HScoreDisplay.NameList.SaveToFile('HighScoreName.txt');
- end;
+  ReadHighScoreList(str);
+  if not assigned(HScoreDisplay) then
+   HScoreDisplay             := THighScoreDisplay.Create(self);
+   HScoreDisplay.Parent      := self;
+   HScoreDisplay.Left        := (width div 2) - (HScoreDisplay.Width div 2) ;
+   HScoreDisplay.Top         :=  80;
+   HScoreDisplay.ScoreList.AddStrings(str);
 
+ finally
+  str.Free;
+ end;
 end;
+
+
 
 procedure TForm1.RocketTakt(Sender: TObject);
 var lv,i : integer;
@@ -549,8 +524,7 @@ begin
     begin
       if Barricades[i].CheckImpact(TERocket(ERocketList.Items[lv]).EHotspot) then
       begin
-       //caption:=inttostr(TERocket(ERocketList.Items[lv]).EHotspot.y);
-       if not made then
+      if not made then
        begin
         ImpactList.Add(TImpact.Create(self));
         TImpact(ImpactList.Last).Parent:= self;

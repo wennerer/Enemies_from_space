@@ -1,3 +1,4 @@
+{ <This unit is a part of Enemies from Space> }
 unit efs_types;
 
 {$mode objfpc}{$H+}

@@ -1,3 +1,4 @@
+{ <This unit is a part of Enemies from Space> }
 unit efs_info;
 
 {$mode objfpc}{$H+}
@@ -37,8 +38,8 @@ type
     FTextStyle        : TTextStyle;
     BlinkiTimer       : TTimer;
     FBlinkiFontColor  : TColor;
+    FDisplayText      : string;
   public
-    NameList : TStringList;
     ScoreList: TStringList;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -125,7 +126,7 @@ destructor THighScoreEdit.Destroy;
 begin
   BlinkiTimer.Enabled:= false;
   inherited Destroy;
-  //FreeAndNil(BlinkiTimer);
+
 end;
 
 procedure THighScoreEdit.Paint;
@@ -137,7 +138,8 @@ begin
   Canvas.Font.Color  := FBlinkiFontColor;
   Canvas.Font.Height:= 18;
   Canvas.TextRect(rect(0,20,width,45),0,0,'New Highscore! Enter Your Name!',FTextStyle);
-
+  Canvas.Font.Height:= 12;
+  Canvas.TextOut(100,135,'Press Enter to confirm');
 end;
 
 procedure THighScoreEdit.OnBlinkiTimer(Sender: TObject);
@@ -158,10 +160,9 @@ begin
   height := 300;
   Cursor := crNone;
   FTextStyle.Clipping  := true;
-  FTextStyle.Wordbreak := true;
-  FTextStyle.SingleLine:= false;
   FTextStyle.Alignment := taCenter;
   FTextStyle.Layout    := tlCenter;
+  FDisplayText         := 'Highscores';
 
   BlinkiTimer          := TTimer.Create(nil);
   BlinkiTimer.SetSubComponent(true);
@@ -170,7 +171,6 @@ begin
   BlinkiTimer.OnTimer  := @OnBlinkiTimer;
   FBlinkiFontColor     := clFuchsia;
 
-  NameList  := TStringList.Create;
   ScoreList := TStringList.Create;
 end;
 
@@ -179,7 +179,6 @@ begin
   inherited Destroy;
   BlinkiTimer.Enabled:= false;
   FreeAndNil(BlinkiTimer);
-  NameList.Free;
   ScoreList.Free;
 end;
 
@@ -187,15 +186,14 @@ procedure THighScoreDisplay.Paint;
 var lv : integer;
 begin
   inherited Paint;
+  FTextStyle.Alignment := taCenter;
   Canvas.Brush.Color := $00323232;
   Canvas.Pen.Color   := clFuchsia;
   Canvas.FillRect(0,0,width,height);
-  //Canvas.Rectangle(0,0,width,height);
 
   Canvas.Font.Color  := FBlinkiFontColor;
   Canvas.Font.Height:= 28;
-  //canvas.TextOut(20,2,'High Score');
-  canvas.TextRect(rect(0,15,width,50),0,0,'Highscores',FTextStyle);
+  canvas.TextRect(rect(0,15,width,50),0,0,FDisplayText,FTextStyle);
 
   Canvas.Font.Color  := clFuchsia;
   lv:=5;
@@ -220,17 +218,24 @@ begin
   Canvas.Font.Height:= 18;
   for lv:= 0 to 9 do
    begin
+    FTextStyle.Alignment := taCenter;
     canvas.TextRect(rect(90,55+(lv*22),110,75+(lv*22)),0,0,inttostr(lv+1),FTextStyle);
-    canvas.TextRect(rect(110,55+(lv*22),210,75+(lv*22)),0,0,ScoreList[lv],FTextStyle);
-    canvas.TextRect(rect(210,55+(lv*22),410,75+(lv*22)),0,0,NameList[lv],FTextStyle);
+    FTextStyle.Alignment := taLeftJustify;
+    canvas.TextRect(rect(110,55+(lv*22),410,75+(lv*22)),150,0,ScoreList[lv],FTextStyle);
+
    end;
 end;
 
 procedure THighScoreDisplay.OnBlinkiTimer(Sender: TObject);
+const i : integer = 0;
 begin
  if FBlinkiFontColor = clFuchsia then
   FBlinkiFontColor     := $00323232 else
   FBlinkiFontColor     := clFuchsia;
+  if i = 0 then FDisplayText := 'Highscores';
+  if i = 2 then FDisplayText := 'Press Enter to continue';
+  inc(i); parent.Caption:=inttostr(i);
+  if i > 3 then i:=0;
   invalidate;
 end;
 

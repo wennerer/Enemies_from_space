@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, enemies_from_space, efs_info, efs_types, efs_field
+  Forms, enemies_from_space, efs_info, efs_types, efs_field, efs_highscore
   { you can add units after this };
 
 {$R *.res}

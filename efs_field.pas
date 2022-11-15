@@ -1,3 +1,4 @@
+{ <This unit is a part of Enemies from Space> }
 unit efs_field;
 
 {$mode objfpc}{$H+}
@@ -51,7 +52,6 @@ type
     RubberList    : TObjectList;
     FOnGameOver   : TOver;
     FOnLevelMade  : TLevelMade;
-    //FReadRect: TRect;
     MoveTimer     : TTimer;
     EnemiesTrend  : byte;
     FInterval     : integer;
@@ -304,7 +304,7 @@ begin
   //Abschuss Enemie ermitteln
   i:= random(digits.Count-1);
   j:= strtoint(digits[i]);
-  //parent.caption:=inttostr(j);
+
   for lv:=0 to EnemieList.Count-1 do
    begin
     if (TEnemies(EnemieList.Items[lv]).Tag) = j then
