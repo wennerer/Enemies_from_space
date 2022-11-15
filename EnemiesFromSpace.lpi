@@ -20,9 +20,10 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
+      <RevisionNr Value="1"/>
     </VersionInfo>
     <BuildModes Count="1">
-      <Item1 Name="Debug" Default="True"/>
+      <Item1 Name="Linux_64_Default" Default="True"/>
       <SharedMatrixOptions Count="1">
         <Item1 ID="493732706513" Value="-g -O- -gh -gt -Criot"/>
       </SharedMatrixOptions>
@@ -81,7 +82,6 @@
     <Linking>
       <Debugging>
         <DebugInfoType Value="dsDwarf3"/>
-        <UseHeaptrc Value="True"/>
       </Debugging>
       <Options>
         <Win32>

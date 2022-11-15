@@ -234,7 +234,7 @@ begin
   FBlinkiFontColor     := clFuchsia;
   if i = 0 then FDisplayText := 'Highscores';
   if i = 2 then FDisplayText := 'Press Enter to continue';
-  inc(i); parent.Caption:=inttostr(i);
+  inc(i);
   if i > 3 then i:=0;
   invalidate;
 end;

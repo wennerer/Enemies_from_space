@@ -34,6 +34,8 @@ type
     TrendRight: boolean;
     STimer    : TTimer;
     Ship      : array [0..19] of TPoint;
+    FSpeed    : integer;
+    procedure SetSpeed(AValue: integer);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -44,6 +46,7 @@ type
     procedure OnSTimer(Sender: TObject);
     function Hotspot:TPoint;
     procedure CheckShip (out aShip : array of TPoint);
+    property Speed : integer read FSpeed write SetSpeed;
   end;
 
 type
@@ -95,6 +98,13 @@ implementation
 
 {xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx TSpaceShip xxxxxxxxxxxxxxxxxxxxxxxxxxx}
 
+procedure TSpaceShip.SetSpeed(AValue: integer);
+begin
+  if FSpeed=AValue then Exit;
+  FSpeed:=AValue;
+  STimer.Interval :=  FSpeed;
+end;
+
 constructor TSpaceShip.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -102,7 +112,8 @@ begin
   height:= 30;
   STimer          := TTimer.Create(nil);
   STimer.SetSubComponent(true);
-  STimer.Interval :=  5;
+  FSpeed := 5;
+  STimer.Interval :=  FSpeed;
   STimer.Enabled  := false;
   STimer.OnTimer  := @OnSTimer;
 
