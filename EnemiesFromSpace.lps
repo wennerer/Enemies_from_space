@@ -17,8 +17,7 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="236"/>
+        <TopLine Value="242"/>
         <CursorPos X="51" Y="259"/>
         <UsageCount Value="222"/>
         <Bookmarks Count="1">
@@ -30,9 +29,10 @@
       <Unit2>
         <Filename Value="efs_info.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="199"/>
-        <CursorPos X="37" Y="140"/>
+        <TopLine Value="173"/>
+        <CursorPos X="37" Y="196"/>
         <UsageCount Value="222"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -62,7 +62,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="140"/>
         <CursorPos X="81" Y="160"/>
-        <UsageCount Value="141"/>
+        <UsageCount Value="142"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>

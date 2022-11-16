@@ -193,7 +193,7 @@ begin
 
   Canvas.Font.Color  := FBlinkiFontColor;
   Canvas.Font.Height:= 28;
-  canvas.TextRect(rect(0,15,width,50),0,0,FDisplayText,FTextStyle);
+  canvas.TextRect(rect(0,17,width,54),0,0,FDisplayText,FTextStyle);
 
   Canvas.Font.Color  := clFuchsia;
   lv:=5;
