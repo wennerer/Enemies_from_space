@@ -218,7 +218,7 @@ begin
    made:=false;
    inc(Level);
    LevelDisplay.DisplayText:='Level '+inttostr(Level);
-   BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
+   BreakDisplay.DisplayText:= 'F10 Break   ESC Exit   Up/Down Speed '+inttostr(SpaceShip.Speed);
    if NG then
     begin
      Level := 0;
@@ -250,13 +250,13 @@ begin
  if Key = VK_Up then begin
   SpaceShip.Speed := SpaceShip.Speed -1;
   if SpaceShip.Speed < 1 then SpaceShip.Speed :=1;
-  BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
+  BreakDisplay.DisplayText:= 'F10 Break   ESC Exit   Up/Down Speed '+inttostr(SpaceShip.Speed);
  end;
 
  if Key = VK_Down then begin
   SpaceShip.Speed := SpaceShip.Speed +1;
   if SpaceShip.Speed > 8 then SpaceShip.Speed :=8;
-  BreakDisplay.DisplayText:= 'F10 Break      ESC Exit      Speed '+inttostr(SpaceShip.Speed);
+  BreakDisplay.DisplayText:= 'F10 Break   ESC Exit   Up/Down Speed '+inttostr(SpaceShip.Speed);
   end;
 
  if Key = VK_SPACE then begin
@@ -265,7 +265,7 @@ begin
     RocketList.Add(TRocket.Create(self));
     TRocket(RocketList.Last).Parent:= self;
     TRocket(RocketList.Last).Top   := SpaceShip.Top-TRocket(RocketList.Last).Height;
-    TRocket(RocketList.Last).Left  := SpaceShip.Hotspot.X -1;
+    TRocket(RocketList.Last).Left  := SpaceShip.Hotspot.X-1;
     inc(Shots);
     ShotsDisplay.DisplayText:='Shots '+inttostr(Shots);
    end;
@@ -485,7 +485,7 @@ begin
    begin
     If PtInRect(Barricades[i].ReadRect,TRocket(RocketList.Items[lv]).Hotspot) then
     begin
-      if Barricades[i].CheckImpact(TRocket(RocketList.Items[lv]).Hotspot) then
+      if Barricades[i].CheckImpact(TRocket(RocketList.Items[lv]).Hotspot,1) then
       begin
        if not made then
        begin
@@ -534,7 +534,7 @@ begin
    begin
     If PtInRect(Barricades[i].ReadRect,TERocket(ERocketList.Items[lv]).EHotspot) then
     begin
-      if Barricades[i].CheckImpact(TERocket(ERocketList.Items[lv]).EHotspot) then
+      if Barricades[i].CheckImpact(TERocket(ERocketList.Items[lv]).EHotspot,2) then
       begin
       if not made then
        begin

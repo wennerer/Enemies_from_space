@@ -61,7 +61,7 @@ type
     destructor Destroy; override;
     procedure   Paint; override;
     function ReadRect : TRect;
-    function CheckImpact(aPoint: TPoint): boolean;
+    function CheckImpact(aPoint: TPoint; aFlag: byte): boolean;
     end;
 
 type
@@ -315,11 +315,16 @@ begin
  result.Bottom := Top+Height;
 end;
 
-function TBarricade.CheckImpact(aPoint:TPoint): boolean;
+function TBarricade.CheckImpact(aPoint:TPoint;aFlag : byte): boolean;
 begin
  result:=false;
- if canvas.Pixels[aPoint.X-left,aPoint.Y-Top] =clLime then
+ if aFlag = 1 then
+ if canvas.Pixels[aPoint.X-left,aPoint.Y-Top-2] =clLime then
  result:=true;
+
+ if aFlag = 2 then
+ if canvas.Pixels[aPoint.X-left,aPoint.Y-Top] =clLime then
+ result := true;
 end;
 
 {xxxxxxxxxxxxxxxxxxxx TRocket xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
@@ -375,7 +380,6 @@ end;
 
 procedure TERocket.EMoveRocket;
 begin
- //Top := Top+2;
  Setbounds(left,top+2,width,height);
 end;
 
